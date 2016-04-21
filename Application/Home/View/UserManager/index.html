@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>userlist</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap-theme.css">
+</head>
+<body>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>用户名</th>
+			<th>角色</th>
+			<th>编辑</th>
+		</tr>
+	</thead>
+	<foreach name="info" item="var">
+		<tbody>
+			<tr>
+				<td>{$var.id}</td>
+				<td>{$var.username}</td>
+				<td>
+					<!-- 循环列出角色 -->
+					<foreach name="var['role']" item="vo">
+						{$vo.rolename}&nbsp;&nbsp;
+					</foreach>
+				</td>
+				<td>编辑</td>
+			</tr>
+		</tbody>
+	</foreach>
+</table>
+
+</body>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery/jquery-1.12.3.js"></script>
+	<script src="__PUBLIC__/js/bootstrap/bootstrap.js"></script>
+</html>

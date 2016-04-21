@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加用户</title>
+	 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="/css/globalStyle.css">
+</head>
+<body>
+	 <div class="container">
+        <form action="http://localhost:8081/Home/RoleAdmin/add" class="form-horizontal" method="post">
+            <div class="form-group">
+                <label for="role" class="col-sm-2 control-label">username(英文)</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="角色名" name="role" id="role">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="descript" class="col-sm-2 control-label">descript</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" placeholder="描述" name="descript" id="descript">
+                </div>
+            </div>
+            <div class="form-group">
+        		<label class="col-sm-2 control-label">role:</label>
+                <div class="col-sm-4">
+                   <label>
+                        <input type="checkbox" name='status'>是否启用
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 col-sm-offset-1">
+                    <button class="btn btn-default" type="submit">submit</button>
+                </div>
+                <div class="col-sm-6">
+                    <button class="btn btn-default" type="reset">reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="/js/jquery/jquery-1.12.3.js"></script>
+<script src="/js/bootstrap/bootstrap.js"></script>
+</html>

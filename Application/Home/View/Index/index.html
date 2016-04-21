@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <link rel="shortcut icon" href="__PUBLIC__/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/globalStyle.css">
+</head>
+
+<body>
+    <div>
+        <div>
+            <div>
+                <nav class="navbar navbar-default" style="margin-bottom: 0px">
+                    <div class="container">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="http://wuchong.me" target="_blank">Brand</a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+<!--                                 <li class="action active"><a href="#">首页 <span class="sr-only">(current)</span></a></li> -->
+<!--                                 <li class="action"><a href="#" data-class="java">java</a></li> -->
+<!--                                 <li class="action"><a href="#"  data-class="html">html</a></li> -->
+<!--                                 <li class="action"><a href="#"  data-class="css">css</a></li> -->
+<!--                                 <li class="action"><a href="#"  data-class="js">js</a></li> -->
+<!--                                 <li class="action"><a href="#"  data-class="unix">unix</a></li> -->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工具 <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="action"><a href="#" data-class="eclipse">eclipse</a></li>
+                                        <li class="action"><a href="#" data-class="sublime">sublime</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="action"><a href="#" data-class="maven">maven</a></li>
+                                        <li class="action"><a href="#" data-class="git">git</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">框架 <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li role="separator" class="divider">服务器端</li>
+                                        <li class="action"><a href="#" data-class="thinkphp">thinkphp</a></li>
+                                        <li class="action"><a href="#" data-class="spring">spring</a></li>
+                                        <li role="separator" class="divider">前端</li>
+                                        <li class="action"><a href="#" data-class="bootstrap">bootstrap</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="action"><a href="/html/login/login.html" data-class="login">登录</a></li>
+                                <li><a href="#" data-class="leverl">离开</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="action"><a href="#" data-class="fell">感悟</a></li>
+                                <li class="action"><a href="#" data-class="contribution">贡献</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+        <!-- 身体部分 -->
+        <div class="container-fluid">
+            <!-- 列表 -->
+            <div class="row">
+                <div class="col-md-2">
+                    <ul class="list-unstyled">
+                        <li>模块管理</li>
+                        <li>
+                            <ul style="margin-left: 20px;list-style: none;">
+                            <li><a class="target" data-target="{:U('ModelManager/add')}">模块添加</a></li>
+                            <li><a class="target" data-target="{:U('ModelManager/index')}">模块列表</a></li>
+                            </ul>
+                        </li>
+                         <li>角色管理</li>
+                        <li>
+                            <ul style="margin-left: 20px;list-style: none;">
+                            <li><a class="target" data-target="{:U('RoleManager/add')}">角色添加</a></li>
+                            <li><a class="target" data-target="{:U('RoleManager/index')}">角色列表</a></li>
+                            </ul>
+                        </li>
+                        <li>用户管理</li>
+                        <li>
+                            <ul style="margin-left: 20px;list-style: none;">
+                            <li><a class="target" data-target="{:U('UserManager/add')}">添加用户</a></li>
+                            <li><a class="target" data-target="{:U('UserManager/index')}">用户列表</a></li>
+                            </ul>
+                        </li>
+                        <!-- 循环显示内容 -->
+                        <!-- <foreach name="info" item="var">
+                            <li>{$var.description}</li>
+                            <ul style="margin-left: 20px;list-style: none;">
+                                <foreach name="var['child']" item="vo">
+                                    <li><a class="target" data-target="{:U($vo['right_name'])}">{$vo.description}</a></li>
+                                </foreach>
+                            </ul>
+                        </foreach> -->
+                    </ul>
+                </div>
+                <!-- 文章 -->
+                <div class="col-md-10" style="margin-top: 20px">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{:U('UserManager/index')}" id="iframe"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 脚的部分 -->
+        <!--       <div style="clear: both;">
+            官网
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>-->
+    </div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/jquery/jquery-1.12.3.js"></script>
+<script src="__PUBLIC__/js/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/globalStyle.js"></script>
+
+</html>

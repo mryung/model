@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加用户</title>
+	 <link rel="shortcut icon" href="__PUBLIC__/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/globalStyle.css">
+</head>
+<body>
+	<div class="container">
+		<form action="{:U('ModelManager/addAction')}" class="form-horizontal" method='post'>
+			<div class="form-group">
+				<label for="parentId" class="col-sm-2 control-label">parentId</label>
+				<div class="col-sm-5 ">
+					<input type="number" class="form-control" id="parentId" name="parent_id" placeholder="父权限" value="{$parentid}">
+				</div>
+				<input type="hidden" name="parentRight" value="{$privilegeName}">
+			</div>
+			<div class="form-group">
+				<label for="rightName" class="col-sm-2 control-label">class</label>
+				<div class="col-sm-5 ">
+					<input type="text" class="form-control" id="class" name="class" placeholder="类别(1.表示应用，2表示菜单，3表示按钮)" value="{$class}">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="rightName" class="col-sm-2 control-label">sort</label>
+				<div class="col-sm-5 ">
+					<input type="text" class="form-control" id="sort" name="sort" placeholder="排列顺序" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="rightName" class="col-sm-2 control-label">rightName</label>
+				<div class="col-sm-5 ">
+					<input type="text" class="form-control" id="privilege_name" name="privilege_name" placeholder="权限">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="descript" class="col-sm-2 control-label">descrition</label>
+				<div class="col-sm-5 ">
+					<input type="text" class="form-control" id="privilege_desc" name="privilege_desc" placeholder="权限描述">
+				</div>
+			</div>
+			<div class="class-group">
+				<div class="col-sm-6 col-sm-offset-3">
+					<button class="btn dtn-default" type="submit">submit</button>
+					<button class="btn dtn-default" type="reset">reset</button>
+				</div>
+		</form>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/js/jquery/jquery-1.12.3.js"></script>
+<script src="__PUBLIC__/js/bootstrap/bootstrap.js"></script>
+</html>

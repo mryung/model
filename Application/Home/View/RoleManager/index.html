@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>userlist</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap-theme.css">
+</head>
+<body>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>角色名</th>
+			<th>角色描述</th>
+			<td>状态</td>
+		</tr>
+	</thead>
+	<foreach name="info" item="var">
+		<tbody>
+			<tr>
+				<td>{$var.id}</td>
+				<td>{$var.rolename}</td>
+				<td>{$var.description}</td>
+				<td>
+					<if condition="$var['status'] eq 0">
+						开启
+					<else />
+						关闭
+					</if>
+				</td>
+			</tr>
+		</tbody>
+	</foreach>
+</table>
+
+</body>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery/jquery-1.12.3.js"></script>
+	<script src="__PUBLIC__/js/bootstrap/bootstrap.js"></script>
+</html>

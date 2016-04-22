@@ -14,6 +14,7 @@
 			<th>角色名</th>
 			<th>角色描述</th>
 			<td>状态</td>
+			<td>编辑</td>
 		</tr>
 	</thead>
 	<foreach name="info" item="var">
@@ -29,6 +30,7 @@
 						关闭
 					</if>
 				</td>
+				<td><a href="{:U('RoleManager/update',array('id'=>$var['id']))}">编辑</a></td>
 			</tr>
 		</tbody>
 	</foreach>

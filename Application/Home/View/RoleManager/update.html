@@ -1,47 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>添加用户</title>
-	 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap-theme.css">
-    <link rel="stylesheet" href="/css/globalStyle.css">
+    <meta charset="utf-8">
+    <title>添加用户</title>
+    <link rel="shortcut icon" href="__PUBLIC__/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/globalStyle.css">
 </head>
+
 <body>
-	 <div class="container">
-        <form action="http://localhost:8081/Home/RoleAdmin/add" class="form-horizontal" method="post">
+    <div class="container">
+        <form action="{:U('RoleManager/updateAction')}" class="form-horizontal" method="post">
             <div class="form-group">
+                <input type = "hidden" name="id" value="{$info.id}">
                 <label for="role" class="col-sm-2 control-label">username(英文)</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="角色名" name="role" id="role">
+                    <input type="text" class="form-control" placeholder="角色名" name="rolename" id="rolename" value="{$info.rolename}">
                 </div>
             </div>
             <div class="form-group">
                 <label for="descript" class="col-sm-2 control-label">descript</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="描述" name="descript" id="descript">
+                    <input type="text" class="form-control" placeholder="描述" name="description" id="descript" value="{$info.description}">
                 </div>
             </div>
             <div class="form-group">
-        		<label class="col-sm-2 control-label">role:</label>
+                <label class="col-sm-2 control-label">role:</label>
                 <div class="col-sm-4">
-                   <label>
-                        <input type="checkbox" name='status'>是否启用
+                    <label>
+                        <input type="checkbox" name='status' 
+                            <if condition="info['status'] eq 0">checked="checked"</if>
+                        >是否启用
                     </label>
                 </div>
             </div>
+            <foreach name="all" item="var">
+                <div class="form-group" style="border: 1px solid #FFD306">
+                    <label class="col-sm-2 control-label">{$var.privilege_desc}:</label>
+                    <div class="col-sm-6">
+                        <foreach name="var['child']" item='vo'>
+                            <div class="row">
+                                <label class="col-sm-2 control-label">{$vo.privilege_desc}:</label>
+                                <div class="col-sm-6">
+                                    <foreach name="vo['child']" item='vo1'>
+                                        <div class="row">
+                                            <label style="margin-left: 10px;margin-right: 10px">
+                                                <input type="checkbox" name='privilege_id[]' value="{$vo1.id}" {$vo1['id']|hasPrivilege=$string,###}>{$vo1.privilege_desc}
+                                            </label>
+                                        </div>
+                                    </foreach>
+                                </div>
+                            </div>
+                            <hr style="border: 1px solid red">
+                        </foreach>
+                    </div>
+                </div>
+            </foreach>
             <div class="form-group">
                 <div class="col-sm-2 col-sm-offset-1">
                     <button class="btn btn-default" type="submit">submit</button>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-2">
                     <button class="btn btn-default" type="reset">reset</button>
                 </div>
             </div>
         </form>
     </div>
 </body>
-<script type="text/javascript" src="/js/jquery/jquery-1.12.3.js"></script>
-<script src="/js/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery/jquery-1.12.3.js"></script>
+<script src="__PUBLIC__/js/bootstrap/bootstrap.js"></script>
+
 </html>

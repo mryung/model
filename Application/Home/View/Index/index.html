@@ -77,7 +77,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <ul class="list-unstyled">
-                        <li>模块管理</li>
+                        <!-- <li>模块管理</li>
                         <li>
                             <ul style="margin-left: 20px;list-style: none;">
                             <li><a class="target" data-target="{:U('ModelManager/add')}">模块添加</a></li>
@@ -97,7 +97,22 @@
                             <li><a class="target" data-target="{:U('UserManager/add')}">添加用户</a></li>
                             <li><a class="target" data-target="{:U('UserManager/index')}">用户列表</a></li>
                             </ul>
-                        </li>
+                        </li> -->
+                        <foreach name="info" item="var">
+                            <li>{$var.privilege_desc}</li>
+                            <li>
+                                <ul style="margin-left: 20px;list-style: none;">
+                                        <li>{$var['child']['privilege_desc']}</li>
+                                        <li>
+                                            <ul style="margin-left: 20px;list-style: none;">
+                                                <foreach name="var['child']['child']" item="vo1">
+                                                    <li><a class="target" data-target="{:U($vo1['privilege_name'])}">{$vo1.privilege_desc}</a></li>
+                                                </foreach>
+                                            </ul>
+                                        </li>
+                                </ul>
+                            </li>
+                        </foreach>
                         <!-- 循环显示内容 -->
                         <!-- <foreach name="info" item="var">
                             <li>{$var.description}</li>

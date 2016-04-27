@@ -1,9 +1,9 @@
 <?php
 namespace Home\Controller;
 
-use Think\Controller;
+use \Home\Controller\BasicController;
 
-class RoleManagerController extends Controller{
+class RoleManagerController extends BasicController{
 
 	public function update(){
 		$all = M('privilege')->where(array('class' => 1))->select(); //查询全部

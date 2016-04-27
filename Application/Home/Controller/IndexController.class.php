@@ -1,10 +1,12 @@
 <?php
 namespace Home\Controller;
-use Think\Controller;
-class IndexController extends Controller {
+
+use \Home\Controller\BasicController;
+
+class IndexController extends BasicController {
     public function pushStack($child=array(),$array=array(),$parentid){
         foreach ($array as $key => $value) {
-            if($value['id'] == $parentid){ //根据子节点查到父节点
+            if($value['id'] == $parentid){ //����ӽڵ�鵽���ڵ�
                 if(!is_array($value['child'])){
                    $value['child'] = array();
                 }
@@ -15,38 +17,73 @@ class IndexController extends Controller {
         return $child;
     }
 
+    public function buildTree($info){
+        $array = array();
+        foreach ($info as $key => $value) {
+            if(!is_array($array[$value['parent_id']])){
+                $array[$value['parent_id']] = array();
+            }
+            array_push($array[$value['parent_id']],$value);
+        }
+        return $array;
+    }
 
+    public function buildParentsTree($all,$info){
+        $array = array();
+        foreach ($info as $key => $value) {
+            foreach ($all as $key1 => $value1) {
+                if($key == $value1['id']){
+                    $value1['child'] = $value;
+                    array_push($array,$value1);
+
+                }
+            }
+        }
+        return $array;
+    }
 
     public function index(){
 
-        $data = M('view_privilege')->where('user_id=2')->select();
+        //�õ��û���ӵ�е�Ȩ�ޣ�����Ȩ��
+        $data = M('view_privilege')->where('user_id='.session("userid"))->select();
+        $all = M('privilege')->select();
+        $data  = $this->buildTree($data);
+        // dump($data);die;
+        $data = $this->buildParentsTree($all,$data);
 
-        $info = array();
+        $data = $this->buildTree($data);
 
-        foreach ($data as $key => $value) {
-            if(!is_array($info[$value['parent_id']])){
-                $info[$value['parent_id']] = array();
-            };
-            array_push($info[$value['parent_id']] , $value);
-        }
+        $all = $this->buildParentsTree($all,$data);
+
+        // $info = array();
+
+        // //����ͬ�������װ��һ��
+        // foreach ($data as $key => $value) {
+        //     if(!is_array($info[$value['parent_id']])){
+        //         $info[$value['parent_id']] = array();
+        //     };
+        //     array_push($info[$value['parent_id']] , $value);
+        // }
 
 
-        $all = array();
-        $i = 0;
-        foreach ($info as $key => $value) {
+        // $all = array();
+        // $i = 0;
 
-            array_push($all,$this->stack($info[$key],$key));
+        // //�õ�һ����
+        // foreach ($info as $key => $value) {
 
-        }
+        //     array_push($all,$this->stack($info[$key],$key));
 
+        // }
         $this->assign("info",$all);
 
 		$this->display();
     }
+
     /**
      * [stack description]
-     * @param  array  $array    [子节点数组]
-     * @param  [type] $parentid [子节点]
+     * @param  array  $array    [�ӽڵ�����]
+     * @param  [type] $parentid [�ӽڵ�]
      * @return [type]           [maxfix]
      */
     private function stack($array=array() , $parentid){
@@ -58,7 +95,7 @@ class IndexController extends Controller {
         if(!is_array($data['child'])){
             $data['child'] = array();
         }
-        $data['child'] = $array;
+        $data["child"] = $array;
 
         $array = $data;
 

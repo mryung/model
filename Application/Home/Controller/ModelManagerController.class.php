@@ -1,9 +1,9 @@
 <?php
 namespace Home\Controller;
 
-use Think\Controller;
+use \Home\Controller\BasicController;
 
-class ModelManagerController extends Controller{
+class ModelManagerController extends BasicController{
 
 	public function add(){
 

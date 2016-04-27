@@ -57,8 +57,8 @@
                                 <button type="submit" class="btn btn-default">Submit</button>
                             </form>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="action"><a href="/html/login/login.html" data-class="login">登录</a></li>
-                                <li><a href="#" data-class="leverl">离开</a></li>
+                                <li class="action"><a href="{:U('Login/login')}" data-class="login">登录</a></li>
+                                <li class="action"><a href="{:U('Login/loginOut')}" data-class="leverl">离开</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="action"><a href="#" data-class="fell">感悟</a></li>
@@ -99,19 +99,21 @@
                             </ul>
                         </li> -->
                         <foreach name="info" item="var">
-                            <li>{$var.privilege_desc}</li>
-                            <li>
-                                <ul style="margin-left: 20px;list-style: none;">
-                                        <li>{$var['child']['privilege_desc']}</li>
-                                        <li>
-                                            <ul style="margin-left: 20px;list-style: none;">
-                                                <foreach name="var['child']['child']" item="vo1">
-                                                    <li><a class="target" data-target="{:U($vo1['privilege_name'])}">{$vo1.privilege_desc}</a></li>
-                                                </foreach>
-                                            </ul>
-                                        </li>
-                                </ul>
-                            </li>
+                                <li>{$var.privilege_desc}</li>
+                                <li>
+                                    <ul style="margin-left: 20px;list-style: none;">
+                                        <foreach name="var['child']" item='var1'>
+                                            <li>{$var1['privilege_desc']}</li>
+                                            <li>
+                                                <ul style="margin-left: 20px;list-style: none;">
+                                                    <foreach name="var1['child']" item="vo1">
+                                                        <li><a class="target" data-target="{:U($vo1['privilege_name'])}">{$vo1.privilege_desc}</a></li>
+                                                    </foreach>
+                                                </ul>
+                                            </li>
+                                        </foreach>
+                                    </ul>
+                                </li>
                         </foreach>
                         <!-- 循环显示内容 -->
                         <!-- <foreach name="info" item="var">

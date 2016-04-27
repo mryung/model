@@ -4,41 +4,35 @@
 <head>
     <meta charset="utf-8">
     <title>添加用户</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap/bootstrap-theme.css">
-    <link rel="stylesheet" href="/css/globalStyle.css">
+    <link rel="shortcut icon" href="__PUBLIC__/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap/bootstrap-theme.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/globalStyle.css">
 </head>
 
 <body>
     <div class="container">
-        <form action="/index.html" class="form-horizontal">
+        <form action="{:U('UserManager/updateAction')}" class="form-horizontal" method="post">
             <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">username</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" placeholder="用户名" name="usernaeme" id="username">
+                    <input type="text" class="form-control" placeholder="用户名" name="username" value="{$user.username}" id="username">
+                    <input type="hidden" value="{$user.id}" name="id">
                 </div>
             </div>
             <div class="form-group">
-            	<div class="row">
-            		<label class="col-sm-2 control-label">role:</label>
-            	</div>
-            	<div class="row">
-	                <div class="col-sm-4 col-sm-offset-2">
-	                   <label>
-                            <input type="checkbox" name='remember'> Remember me
-                        </label>
-                        <label>
-                            <input type="checkbox" name='remember'> Remember me
-                        </label>
-                        <label>
-                            <input type="checkbox" name='remember'> Remember me
-                        </label>
-                        <label>
-                            <input type="checkbox" name='remember'> Remember me
-                        </label>
-	                </div>
-            	</div>
+                <div class="row">
+                    <label class="col-sm-2 control-label">role:</label>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <foreach name="info" item="var">
+                           <label style="margin-right: 50px">
+                                <input type="checkbox" name='permission[]' value="{$var.id}" {$var['id']|hasPrivilege=$string,###}>{$var.rolename}
+                            </label>
+                        </foreach>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 col-sm-offset-2">
@@ -51,7 +45,7 @@
         </form>
     </div>
 </body>
-<script type="text/javascript" src="/js/jquery/jquery-1.12.3.js"></script>
-<script src="/js/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery/jquery-1.12.3.js"></script>
+<script src="__PUBLIC__/js/bootstrap/bootstrap.js"></script>
 
 </html>

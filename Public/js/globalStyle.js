@@ -1,8 +1,12 @@
 $(function(){
+
+	// for(var i in window){
+	// 	console.log(i);
+	// }
+
 	$(".action").click(function(){
 		$(".action").removeClass("active");
 		$(this).addClass("active");
-		alert($(this).children("a").attr("data-class"));
 	});
 
 	function ajaxReturn(data,url,action){

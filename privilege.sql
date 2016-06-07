@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.6.29)
-# Date: 2016-04-21 21:55:00
+# Date: 2016-06-07 17:57:33
 # Generator: MySQL-Front 5.3  (Build 5.17)
 
 /*!40101 SET NAMES utf8 */;
@@ -16,14 +16,16 @@ CREATE TABLE `privilege` (
   `privilege_desc` varchar(255) DEFAULT NULL COMMENT '权限描述',
   `class` int(11) DEFAULT NULL COMMENT '权限类别 1.表示应用，2表示菜单，3表示按钮',
   `sort` int(11) DEFAULT NULL COMMENT '各级的排列顺序',
+  `click` tinyint(3) DEFAULT '1' COMMENT '是否是url; 0 表示url, 1 表示不是',
+  `show_index` tinyint(3) DEFAULT '1' COMMENT '是否在首页显示： 1是，0,不是',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='权限表';
 
 #
 # Data for table "privilege"
 #
 
-INSERT INTO `privilege` VALUES (1,'0','Home','Home模块',1,1),(2,'0','Admin','管理模块',1,1),(3,'1','Home/Modelmanager','权限管理模块',2,1),(4,'3','Home/Modelmanager/add','添加权限',3,1),(5,'3','Home/Modelmanager/index','权限列表',3,1),(6,'1','Home/RoleManager','角色模块',2,1),(7,'6','Home/RoleManager/add','添加角色',3,1),(8,'6','Home/RoleManager/index','角色列表',3,1),(9,'1','Home/UserManager','用户模块',2,1),(10,'9','Home/UserManager/add','添加用户',3,1),(11,'9','Home/UserManager/index','用户列表',3,1);
+INSERT INTO `privilege` VALUES (1,'0','Home','Home模块',1,1,1,1),(2,'0','Admin','管理模块',1,1,1,1),(3,'1','Home/ModelManager','权限管理模块',2,1,1,1),(4,'3','Home/ModelManager/add','添加权限',3,1,0,1),(5,'3','Home/ModelManager/index','权限列表',3,1,0,1),(6,'1','Home/RoleManager','角色模块',2,1,1,1),(7,'6','Home/RoleManager/add','添加角色',3,1,0,1),(8,'6','Home/RoleManager/index','角色列表',3,1,0,1),(9,'1','Home/UserManager','用户模块',2,1,1,1),(10,'9','Home/UserManager/add','添加用户',3,1,0,1),(11,'9','Home/UserManager/index','用户列表',3,1,0,1),(12,'6','Home/RoleManager/update','更新角色',3,1,0,0),(13,'2','Admin/Index','后台首页控制器',2,1,1,1),(14,'13','Admin/Index/index','首页',3,1,1,1),(15,'14','Admin/Index/index/indexChild','测试四级目录',4,1,0,1),(16,'15','Admin/Index/index/indexChild/hello','hhhh',5,11,0,1),(17,'5','Home/ModelManager/index/index','额外测试的',4,1,0,1);
 
 #
 # Structure for table "role"
@@ -37,13 +39,13 @@ CREATE TABLE `role` (
   `gen_time` date DEFAULT NULL,
   `status` varchar(255) DEFAULT '1' COMMENT '是否启用0表示启用，1表示锁定',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='角色';
 
 #
 # Data for table "role"
 #
 
-INSERT INTO `role` VALUES (1,'admin','管理员','2016-04-21','0'),(2,'anyone','游客','2016-04-21','0');
+INSERT INTO `role` VALUES (1,'admin','管理员','2016-04-21','0'),(2,'anyone','游客','2016-04-21','0'),(3,'test1','实验账号1','2016-04-22','0'),(4,'test2','实验账号2','2016-04-22','0'),(5,'','','2016-06-06','1');
 
 #
 # Structure for table "role_privilege"
@@ -59,7 +61,7 @@ CREATE TABLE `role_privilege` (
 # Data for table "role_privilege"
 #
 
-INSERT INTO `role_privilege` VALUES ('4','1'),('5','1'),('7','1'),('8','1'),('10','1'),('11','1'),('10','2'),('11','2');
+INSERT INTO `role_privilege` VALUES ('4','4'),('5','4'),('14','4'),('4','1'),('5','1'),('7','1'),('8','1'),('10','1'),('11','1'),('14','1'),('4','3'),('5','3'),('7','3'),('10','3'),('4','2'),('5','2'),('7','2'),('8','2'),('10','2'),('11','2');
 
 #
 # Structure for table "user"
@@ -68,16 +70,17 @@ INSERT INTO `role_privilege` VALUES ('4','1'),('5','1'),('7','1'),('8','1'),('10
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
-  `username` varchar(255) DEFAULT NULL COMMENT '用户名',
+  `user_name` varchar(255) DEFAULT NULL COMMENT '用户名',
   `password` varchar(255) DEFAULT NULL,
+  `deleted` tinyint(3) DEFAULT '0' COMMENT '0--表示未删除，1--代表删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 #
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (1,'root',NULL),(2,'test',NULL);
+INSERT INTO `user` VALUES (1,'root','123456',0),(2,'test','123456',0);
 
 #
 # Structure for table "user_role"
@@ -93,7 +96,7 @@ CREATE TABLE `user_role` (
 # Data for table "user_role"
 #
 
-INSERT INTO `user_role` VALUES ('1','1'),('1','2'),('2','2');
+INSERT INTO `user_role` VALUES ('1','1'),('1','2'),('1','3'),('1','4'),('2','2'),('2','3'),('2','4');
 
 #
 # Structure for table "view_privilege"

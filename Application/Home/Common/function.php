@@ -10,11 +10,17 @@ function hasPrivilege($string,$privilegeId){
 function showTree($tree,&$content,$count){
 
 	if(is_array($tree["child"])){
-		$content .= "<ul style='list-style:none'>";
+		$content =$content . "<ul style='margin-left: ". 10*$count ."px;list-style:none'>";
 		
 		foreach ($tree["child"] as $var){
 			
-			$content .="<li>".$var["privilege_desc"]."</li>";
+			if($var['show_index'] == 1){
+				if($var["click"] == 1){
+					$content .="<li>".$var["privilege_desc"]."</li>";
+				}else{
+					$content .="<li><a class='target' data-target='".U($var['privilege_name'])."'>".$var["privilege_desc"]."</a></li>";
+				}				
+			}
 			showTree($var, $content, $count+1);
 		}
 		$content .= "</ul>";

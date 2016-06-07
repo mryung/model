@@ -98,23 +98,23 @@
                             <li><a class="target" data-target="{:U('UserManager/index')}">用户列表</a></li>
                             </ul>
                         </li> -->
-                        <foreach name="info" item="var">
-                                <li>{$var.privilege_desc}</li>
-                                <li>
-                                    <ul style="margin-left: 20px;list-style: none;">
-                                        <foreach name="var['child']" item='var1'>
-                                            <li>{$var1['privilege_desc']}</li>
-                                            <li>
-                                                <ul style="margin-left: 20px;list-style: none;">
-                                                    <foreach name="var1['child']" item="vo1">
-                                                        <li><a class="target" data-target="{:U($vo1['privilege_name'])}">{$vo1.privilege_desc}</a></li>
-                                                    </foreach>
-                                                </ul>
-                                            </li>
-                                        </foreach>
-                                    </ul>
-                                </li>
-                        </foreach>
+<!--                         <foreach name="info" item="var"> -->
+<!--                                 <li>{$var.privilege_desc}</li> -->
+<!--                                 <li> -->
+<!--                                     <ul style="margin-left: 20px;list-style: none;"> -->
+<!--                                         <foreach name="var['child']" item='var1'> -->
+<!--                                             <li>{$var1['privilege_desc']}</li> -->
+<!--                                             <li> -->
+<!--                                                 <ul style="margin-left: 20px;list-style: none;"> -->
+<!--                                                     <foreach name="var1['child']" item="vo1"> -->
+<!--                                                         <li><a class="target" data-target="{:U($vo1['privilege_name'])}">{$vo1.privilege_desc}</a></li> -->
+<!--                                                     </foreach> -->
+<!--                                                 </ul> -->
+<!--                                             </li> -->
+<!--                                         </foreach> -->
+<!--                                     </ul> -->
+<!--                                 </li> -->
+<!--                         </foreach> -->
                         <!-- 循环显示内容 -->
                         <!-- <foreach name="info" item="var">
                             <li>{$var.description}</li>
@@ -125,6 +125,7 @@
                             </ul>
                         </foreach> -->
                     </ul>
+                    {$tree}
                 </div>
                 <!-- 文章 -->
                 <div class="col-md-10" style="margin-top: 20px">

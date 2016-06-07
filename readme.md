@@ -1,3 +1,10 @@
+## 权限管理，初级实现 *privilege*
+有任何疑问 请[百度](http://www.baidu.com "百度链接")
+``` php
+public static function Index(){
+}
+```
+
 README
 ===========================
 该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为`GitHub Flavored Markdown`。简称`GFM`，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。
@@ -183,7 +190,7 @@ ___斜粗体2___
 1. 这是一级的数字列表，数字1还是1
    1. 这是二级的数字列表，阿拉伯数字在显示的时候变成了罗马数字
       1. 这是三级的数字列表，数字在显示的时候变成了英文字母
-        1. 四级的数字列表显示效果，就不再变化了，依旧是英文字母
+	    1. 四级的数字列表显示效果，就不再变化了，依旧是英文字母
 
 ### 复选框列表
 - [x] C
@@ -272,3 +279,4 @@ Github的Markdown语法支持添加emoji表情，输入不同的符号码（两�
 具体每一个表情的符号码，可以查询GitHub的官方网页[http://www.emoji-cheat-sheet.com](http://www.emoji-cheat-sheet.com)。
 
 但是这个网页每次都打开**奇慢**。。所以我整理到了本repo中，大家可以直接在此查看[emoji](./emoji.md)。
+

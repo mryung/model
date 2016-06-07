@@ -16,7 +16,7 @@ class PermissionController extends Controller{
 	
 	public function checkPermission(){
 		
-		echo "jjjj";
+	
 	}
 	
 }
